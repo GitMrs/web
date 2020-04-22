@@ -1,4 +1,4 @@
-# 从零构件Vue
+# 从零构件webpack
   1. 安装 npm install -D webpack-cli webpack  // 安装webpack 核心依赖
   2. npm install babel-loader @babel/core @babel/preset-env 安装babel依赖
   3. mkdir build 
