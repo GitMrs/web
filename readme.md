@@ -124,3 +124,65 @@
                 "*.less"
               ],
           ``` 
+      12. 自动清理 npm install clean-webpack-plugin;
+        - webpack.base.js
+          ```
+            const {HtmlWebpackPlugin} = require('clean-webpapck-plugin');
+            module.exports= {
+              ...
+              plugins:[
+                ...
+                new HtmlWebpackPlugin()
+              ]
+            }
+          ```
+      13. 处理拆包
+        - webpack.base.js
+        ```
+          module.exports = {
+            ...
+            optimization:{
+              splitChunks:{
+                chunks:'all',
+                minSize:30000,
+                minChunks:1,
+                ....
+              }
+            }
+          }
+        ```
+      14. less,svg,font处理 npm install less less-loader url-loader file-loader;
+        - webpack.base.js
+          ```
+            module.exports = {
+              module:{
+                rules:[
+                  ...
+                  
+                ]
+              }
+            }
+          ```
+      15. 开发模式 npm install webpack-dev-server -D
+        - webpack.dev.js
+        ```
+          module.exports = {
+            ...
+            devServer:{
+              port:'9528',
+              open:true,
+              historyApiFallback:true,
+              contentBase:'../dist',
+              hot: true,
+              proxy:{
+                'api/vue': { 
+                target: 'xxxx.com/api',
+                pathRewrite: {
+                    'api/vue': '/' 
+                },
+                secure: false,  
+                changeOrigin: true  
+              }
+            }
+          }
+        ```

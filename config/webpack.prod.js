@@ -15,7 +15,7 @@ module.exports = merge({
         test:/\.(css|less)$/,
         use:[
           {
-            loader:MiniCssExtracPlugin.loader,
+            loader:MiniCssExtracPlugin.loader, // 压缩css
             options:{
               filename:'[name].css',
               chunkFilename:'[name].css',
