@@ -6,7 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const resolve = url => path.resolve(__dirname, url);
 module.exports = {
   entry: {
-    main: resolve("../src/index")
+    main: resolve("../src/index"),
+    about: resolve("../src/about")
   },
   output: {
     path: resolve("../dist")
@@ -66,7 +67,15 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: resolve('../public/index.html'),
+      title: '首页',
+      chunks: ['vender', 'main'],
       filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: resolve('../public/about.html'),
+      title: '关于页',
+      chunks: ['vender', 'about'],
+      filename: 'about.html'
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name]_[hash].css',
